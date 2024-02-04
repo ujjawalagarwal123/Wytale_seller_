@@ -1,41 +1,57 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import '../auth_screen/login_screen.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+import 'package:get/get.dart';
+// import 'package:get/get_core/src/get_main.dart';
+import 'package:wytale_seller/views/homepage_screen/homescreen.dart';
+import 'package:wytale_seller/views/order_screen/orderscreen.dart';
+import 'package:wytale_seller/views/product_screen/productscreen.dart';
+import 'package:wytale_seller/views/profile_screen/profilescreen.dart';
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
+import '../../const/const.dart';
 
-class _HomePageState extends State<HomePage> {
+class Home extends StatelessWidget {
+  const Home({super.key});
+
+
+
   @override
   Widget build(BuildContext context) {
+    var controller = Get.put(HomeController());
+    var navScreen=[
+      const HomeScreen(),
+      const ProductScreen(),
+      const OrderScreen(),
+      const ProfileScreen()
+    ];
+
+    var bottomNavBar =[ 
+      const BottomNavigationBarItem(icon: Icon(Icons.home),label: dashboard),
+      BottomNavigationBarItem(icon: Image.asset('assets/icons/products.png',color: darkGrey,width: 24,),label: "product"),
+      BottomNavigationBarItem(icon: Image.asset('assets/icons/orders.png',color: darkGrey,width: 24,), label: "Orders"),
+      BottomNavigationBarItem(icon: Icon(Icons.person,color: darkGrey), label: "Profile")
+    ];
     return Scaffold(
-      backgroundColor: Colors.grey[200],
-      body: Container(
-
-        child:Center(
-          child: SizedBox(
-          height: MediaQuery.of(context).size.height * 0.05,
-          width: MediaQuery.of(context).size.width * 0.25,
-          child: ElevatedButton(
-
-            onPressed: () {
-
-              // Implement your logout logic here
-              // For example:
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => LoginPage()),
-              ); // Navigate to login page
-            },
-            child: Text('Logout'),
-          ),
-                ),
-        ),
+    bottomNavigationBar: Obx(()=> BottomNavigationBar(
+      onTap: (index){
+        controller. navIndex. value = index;
+      },
+      currentIndex: controller.navIndex.value,
+        type: BottomNavigationBarType.fixed,
+        items: bottomNavBar,
+        selectedItemColor: purpleColor,
+        unselectedItemColor: darkGrey,
+      ),
+    ),
+    body: Obx(()=> Column( children: [
+      Expanded (
+        child: navScreen.elementAt(controller.navIndex.value),)
+      ]
+      ),
     )
     );
+
   }
+}
+
+class HomeController  extends GetxController{
+  var navIndex=0.obs;
 }

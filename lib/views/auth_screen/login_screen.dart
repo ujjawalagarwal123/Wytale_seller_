@@ -64,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const HomePage(),
+                        MaterialPageRoute(builder: (context) => const Home(),
                       ));
                       // Validate user input and perform login logic here
                     },
@@ -72,31 +72,31 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 const SizedBox(height: 10.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center, // Center the buttons horizontally
-                  children: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => RegistrationPage()),
-                        );
-                      },
-                      child: const Text('New User?'),
-                    ),
-                    const SizedBox(width: 10.0), // Add spacing between buttons
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => forgetpassword()),
-                        );
-                        // Implement navigation to forgot password page here
-                      },
-                      child: const Text('Forgot Password?'),
-                    ),
-                  ],
-                ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.center, // Center the buttons horizontally
+                //   children: [
+                //     TextButton(
+                //       onPressed: () {
+                //         Navigator.push(
+                //           context,
+                //           MaterialPageRoute(builder: (context) => RegistrationPage()),
+                //         );
+                //       },
+                //       child: const Text('New User?'),
+                //     ),
+                //     const SizedBox(width: 10.0), // Add spacing between buttons
+                //     TextButton(
+                //       onPressed: () {
+                //         Navigator.push(
+                //           context,
+                //           MaterialPageRoute(builder: (context) => forgetpassword()),
+                //         );
+                //         // Implement navigation to forgot password page here
+                //       },
+                //       child: const Text('Forgot Password?'),
+                //     ),
+                //   ],
+                // ),
               showProgressBar == true
               ? CircularProgressIndicator()
               : Container(),

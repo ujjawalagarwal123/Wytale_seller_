@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:wytale_seller/views/auth_screen/login_screen.dart';
 
 
@@ -14,14 +15,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'wytale',
-      theme: ThemeData(
-        scaffoldBackgroundColor: Colors.transparent,
-        appBarTheme: const AppBarTheme(backgroundColor: Colors.transparent),
-
-      ),
+      theme: ThemeData (appBarTheme: const AppBarTheme(backgroundColor:Colors.transparent)),
+// AppBarTheme
+// ThemeData
       home: const LoginPage(),
     );
   }

@@ -5,4 +5,5 @@ const appname = "eMart Seller App",
     password = "Password",
     forgotPassword = "Forgot Password",
     anyProblem = "In case of any difficulty, contact administration",
-    credit = "@BaabaDevs";
+    credit = "@BaabaDevs",
+    dashboard ="Dashboard";
